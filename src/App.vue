@@ -5,6 +5,8 @@
 
 <script>
 import ListOfCities from './components/ListOfCities.vue'
+import "bootstrap/dist/css/bootstrap.min.css"
+
 
 export default {
   name: 'App',
