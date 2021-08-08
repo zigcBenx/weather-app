@@ -4,7 +4,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
-				<input type="text" v-model="city" placeholder="Enter city name...">
+				<input type="text" v-model="city" placeholder="Enter city name..." @keyup.enter="handleAddCity()">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" @click="handleClose()">Cancel</button>

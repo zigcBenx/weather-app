@@ -1,8 +1,8 @@
 <template>
 	<div class="main">
 		<div class="select-city">
-			<div class="select-wrapper" v-if="cities.length > 0">
-				<select @change="cityChanged($event)">
+			<div class="select-wrapper" v-if="cities != undefined && cities.length > 0">
+				<select @change="cityChanged($event)" v-model="selectedCity">
 					<option v-bind:key="city" v-for="city in cities">{{city}}</option>
 				</select>
 			</div>
@@ -35,7 +35,8 @@
 		},
 		mounted() {
 			// call method for gathering cities from storage
-			this.updateCityList()
+			this.updateCityList();
+			this.makeRequest(this.selectedCity);
 		},
 		methods: {
 			toggleModal() {
@@ -46,7 +47,7 @@
 				// get city list from local storage
 				var cities = JSON.parse(localStorage.getItem("cities"));
 
-				if (cities.length > 0) {
+				if (cities != undefined && cities.length > 0) {
 					this.cities = cities;
 				}
 
@@ -56,8 +57,11 @@
 			cityChanged(event) {
 				// selected city
 				this.selectedCity = event.target.value;
-				if (this.selectedCity != "") {
-					fetch(`${this.api_url}weather?q=${this.selectedCity}&units=metric&APPID=${this.api_key}`)
+				this.makeRequest(this.selectedCity)
+			},
+			makeRequest(city) {
+				if (city != "") {
+					fetch(`${this.api_url}weather?q=${city}&units=metric&APPID=${this.api_key}`)
 						.then(res => {
 							return res.json();
 						}).then(this.setWeather);

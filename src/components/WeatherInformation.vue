@@ -22,9 +22,11 @@
 		props: ['weather'],
 		methods: {
 			getBg(weather) {
+				// which background to display
 				return Math.round(weather.main.temp) >= 10 ? 'hot-bg' : 'cold-bg';
 			},
 			dateBuilder () {
+				// generate nicely formatted date
 				let d = new Date();
 				let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 				let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
