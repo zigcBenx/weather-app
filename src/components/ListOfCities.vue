@@ -1,16 +1,18 @@
 <template>
 	<div class="main">
-		<div class="select-city" v-if="cities.length > 0">
-			<select v-bind:key="city.id" v-for="city in cities">
-				<option>{{city.name}}</option>
-			</select>
+		<div class="select-city">
+			<div class="select-wrapper" v-if="cities.length > 0">
+				<select>
+					<option v-bind:key="city" v-for="city in cities">{{city}}</option>
+				</select>
+			</div>
+
+			<div v-else>No cities</div>
 
 			<button class="btn btn-primary add-city" @click="toggleModal">Add city</button>
 		</div>
 
-		<div v-else>No cities</div>
-
-		<AddCity v-if="showModal" @close="toggleModal"/>
+		<AddCity v-if="showModal" @close="toggleModal" @refresh="updateCityList"/>
 	</div>
 </template>
 
@@ -24,18 +26,29 @@
 		props: {},
 		data() {
 			return {
-				cities: [
-				{id:1, name: 'Ljubljana'}
-				],
+				cities: [],
 				showModal: false
 			}
 		},
 		mounted(){
 			// call method for gathering cities from storage
+			this.updateCityList()
 		},
 		methods:{
 			toggleModal() {
+				// toggle modal for adding new city
 				this.showModal = !this.showModal;
+			},
+			updateCityList() {
+				// get city list from local storage
+				var cities = JSON.parse(localStorage.getItem("cities"));
+
+				if (cities.length > 0) {
+					this.cities = cities;
+				}
+
+				// close modal
+				this.showModal = false;
 			}
 		}
 	}
