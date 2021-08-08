@@ -1,17 +1,20 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <ListOfCities/>
+  <WeatherInformation/>
 </template>
 
 <script>
 import ListOfCities from './components/ListOfCities.vue'
+import WeatherInformation from './components/WeatherInformation.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export default {
   name: 'App',
   components: {
-    ListOfCities
+    ListOfCities,
+    WeatherInformation
   }
 }
 </script>

@@ -8,7 +8,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" @click="handleClose()">Cancel</button>
-				<button type="button" class="btn btn-success">Finish</button>
+				<button type="button" class="btn btn-success" @click="handleAddCity()">Finish</button>
 			</div>
 		</div>
 	</div>
@@ -21,6 +21,11 @@
 		name: 'AddCity',
 		methods:{
 			handleClose() {
+				this.$emit("close");
+			},
+			handleAddCity() {
+				// add to web storage
+				// refresh list in parent component
 				this.$emit("close");
 			}
 		}
