@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <ListOfCities/>
-    <WeatherInformation/>
+    <ListOfCities @updateWeather="updateWeather($event)"/>
+    <WeatherInformation :weather="weather"/>
   </div>
 </template>
 
@@ -10,12 +10,21 @@ import ListOfCities from './components/ListOfCities.vue'
 import WeatherInformation from './components/WeatherInformation.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 
-
 export default {
   name: 'App',
+  data () {
+    return {
+      weather: {}
+    }
+  },
+  methods: {
+    updateWeather(weather){
+      this.weather = weather;
+    }
+  },
   components: {
     ListOfCities,
-    WeatherInformation
+    WeatherInformation,
   }
 }
 </script>

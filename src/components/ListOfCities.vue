@@ -2,7 +2,7 @@
 	<div class="main">
 		<div class="select-city">
 			<div class="select-wrapper" v-if="cities.length > 0">
-				<select>
+				<select @change="cityChanged($event)">
 					<option v-bind:key="city" v-for="city in cities">{{city}}</option>
 				</select>
 			</div>
@@ -27,14 +27,17 @@
 		data() {
 			return {
 				cities: [],
-				showModal: false
+				showModal: false,
+				api_key: '6f9a33953521ce556ec7d259aaf2b161',
+				api_url: 'http://api.openweathermap.org/data/2.5/',
+				selectedCity: ''
 			}
 		},
-		mounted(){
+		mounted() {
 			// call method for gathering cities from storage
 			this.updateCityList()
 		},
-		methods:{
+		methods: {
 			toggleModal() {
 				// toggle modal for adding new city
 				this.showModal = !this.showModal;
@@ -49,6 +52,20 @@
 
 				// close modal
 				this.showModal = false;
+			},
+			cityChanged(event) {
+				// selected city
+				this.selectedCity = event.target.value;
+				if (this.selectedCity != "") {
+					fetch(`${this.api_url}weather?q=${this.selectedCity}&units=metric&APPID=${this.api_key}`)
+						.then(res => {
+							return res.json();
+						}).then(this.setWeather);
+				}
+			},
+			setWeather(weather) {
+				// send weather data to parent
+				this.$emit('updateWeather', weather);
 			}
 		}
 	}
