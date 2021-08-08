@@ -1,7 +1,8 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <ListOfCities/>
-  <WeatherInformation/>
+  <div class="wrapper">
+    <ListOfCities/>
+    <WeatherInformation/>
+  </div>
 </template>
 
 <script>
@@ -28,4 +29,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
