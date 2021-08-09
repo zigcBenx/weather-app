@@ -2,7 +2,9 @@
 	<div class="main">
 		<div class="select-city">
 			<div class="select-wrapper" v-if="cities != undefined && cities.length > 0">
+				<div class="refresh" @click="getTempForCities()">&nbsp;</div>
 				<select @change="cityChanged($event)" v-model="selectedCity">
+					<option value="" disabled selected>Select city</option>
 					<option v-bind:key="city" v-for="city in cities">{{city}}</option>
 				</select>
 			</div>
@@ -36,7 +38,6 @@
 		mounted() {
 			// call method for gathering cities from storage
 			this.updateCityList();
-			this.makeRequest(this.selectedCity);
 		},
 		methods: {
 			toggleModal() {
@@ -53,13 +54,18 @@
 
 				// close modal
 				this.showModal = false;
+
+				this.getTempForCities();
 			},
 			cityChanged(event) {
 				// selected city
-				this.selectedCity = event.target.value;
+				var cityName = event.target.value;
+				cityName = cityName.includes('~') ? cityName.split('~')[0] : cityName;
+				this.selectedCity = cityName;
 				this.makeRequest(this.selectedCity)
 			},
 			makeRequest(city) {
+				// get weather for selected city
 				if (city != "") {
 					fetch(`${this.api_url}weather?q=${city}&units=metric&APPID=${this.api_key}`)
 						.then(res => {
@@ -70,7 +76,25 @@
 			setWeather(weather) {
 				// send weather data to parent
 				this.$emit('updateWeather', weather);
-			}
+			},
+			getTempForCities() {
+				// populate select options with cities temperature
+				var currentCities = this.cities;
+				this.cities = [];
+				currentCities.forEach((city) => {
+					var temp = 0;
+					city = city.includes('~') ? city.split('~')[0] : city;
+					if (city != "") {
+						fetch(`${this.api_url}weather?q=${city}&units=metric&APPID=${this.api_key}`)
+							.then(res => {
+								return res.json();
+							}).then((data) => {
+								temp = data.main.temp;
+								this.cities.push(city + '~' + Math.round(temp) + '°C');
+							});
+					}				
+				});
+			},
 		}
 	}
 </script>
@@ -93,5 +117,15 @@ select {
 .add-city {
 	font-size: 20px;
 	margin-bottom:5px;
+}
+
+.refresh {
+	width:25px;
+	display: inline-block;
+	cursor:pointer;
+	background-image: url("https://cdn.iconscout.com/icon/free/png-512/refresh-1781197-1518571.png");
+	background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 </style>
