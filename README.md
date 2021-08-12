@@ -1,5 +1,13 @@
 # weather-app
 
+## Description
+This project was made as presentation of my Vue knowledge for potential employers.
+It uses online API openweather map, for gathering weather data for different cities.
+
+## Duration
+It took me around 4 - 5 hours to build this.
+
+
 ## Project setup
 ```
 npm install
@@ -9,16 +17,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
