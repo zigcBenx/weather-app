@@ -19,6 +19,3 @@ npm run serve
 ```
 
 
-
-
-
