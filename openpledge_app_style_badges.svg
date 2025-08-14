@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <defs>
+    <!-- Dark background gradients matching app -->
+    <linearGradient id="darkBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f0f;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Teal accent (from app) -->
+    <linearGradient id="tealAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00bfa5;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Purple accent (from sidebar) -->
+    <linearGradient id="purpleAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Card-style background -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#252525;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f1f1f;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Subtle glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Badge 1: OpenPledge Status (matching the "open" state indicators) -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="160" height="32" rx="6" ry="6" fill="url(#darkBg)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    
+    <!-- Status indicator (like the green "open" badges in app) -->
+    <rect x="4" y="4" width="24" height="24" rx="3" ry="3" fill="url(#tealAccent)"/>
+    <text x="16" y="19" font-family="system-ui, sans-serif" font-size="8" font-weight="600" fill="#000000" text-anchor="middle">OP</text>
+    
+    <text x="34" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#e5e7eb">
+      On OpenPledge
+    </text>
+    
+    <text x="20" y="60" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Status Badge</text>
+  </g>
+  
+  <!-- Badge 2: Contributor Badge (matching the pledge buttons) -->
+  <g transform="translate(200, 20)">
+    <rect x="0" y="0" width="150" height="32" rx="6" ry="6" fill="url(#purpleAccent)" filter="url(#glow)"/>
+    
+    <!-- Small icon -->
+    <circle cx="14" cy="16" r="8" fill="rgba(255,255,255,0.1)"/>
+    <g transform="translate(10, 12) scale(0.018, 0.018)">
+      <path fill="white" d="M164.2,161.6c4.9-14.9,10.8-26.6,17.5-35.1s14.9-14.4,24.6-17.9c9.7-3.4,21.3-5,34.7-4.7c13.8,0.3,24.9,1.9,33.3,4.8c8.4,2.9,14.4,7.8,18.1,14.8c3.7,7,5.4,17.2,5.1,30.7c-0.2,8.1-1.2,18.8-3,32.2c-0.7,4.8-1.4,9.7-2.1,14.6l112.9,3.6c0.3-2.3,0.6-4.7,0.9-7c1.9-16.1,3-30.1,3.3-42c0.7-31.1-2.6-56.5-10.1-76.1c-7.4-19.6-18-34.8-31.5-45.7c-13.6-10.9-29.7-18.5-48.2-22.7C301.1,6.9,280.9,4.5,259,4c-32.7-0.7-61.1,2-85.3,8.1c-24.2,6.2-45,16.8-62.4,31.7c-17.5,15-32,35.3-43.5,61c-10.7,23.8-19.4,53.3-26.3,88.2l113.5,3.6C157.8,183.2,160.9,171.5,164.2,161.6z"/>
+    </g>
+    
+    <text x="28" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="white">
+      Contributor
+    </text>
+    
+    <text x="200" y="60" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Contributor Badge</text>
+  </g>
+  
+  <!-- Badge 3: Pledge Amount Style (like the pledge values in app) -->
+  <g transform="translate(20, 100)">
+    <rect x="0" y="0" width="140" height="36" rx="8" ry="8" fill="url(#cardBg)" stroke="rgba(0, 212, 170, 0.2)" stroke-width="1"/>
+    
+    <!-- Amount indicator -->
+    <text x="12" y="18" font-family="system-ui, sans-serif" font-size="8" font-weight="400" fill="#9ca3af">PLEDGED</text>
+    <text x="12" y="30" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#00d4aa">8 €</text>
+    
+    <text x="70" y="24" font-family="system-ui, sans-serif" font-size="10" font-weight="500" fill="#e5e7eb">OpenPledge</text>
+    
+    <text x="20" y="150" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Pledge Amount</text>
+  </g>
+  
+  <!-- Badge 4: Repository Style (matching the repo cards) -->
+  <g transform="translate(200, 100)">
+    <rect x="0" y="0" width="170" height="36" rx="6" ry="6" fill="url(#darkBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    
+    <!-- Language indicator (like in repo cards) -->
+    <circle cx="14" cy="18" r="4" fill="#00d4aa"/>
+    <text x="24" y="15" font-family="system-ui, sans-serif" font-size="8" font-weight="400" fill="#9ca3af">Repository</text>
+    <text x="24" y="26" font-family="system-ui, sans-serif" font-size="10" font-weight="500" fill="#e5e7eb">OpenPledge Project</text>
+    
+    <text x="200" y="150" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Repository Style</text>
+  </g>
+  
+  <!-- Badge 5: Minimal Status (like the language tags) -->
+  <g transform="translate(20, 180)">
+    <rect x="0" y="0" width="100" height="22" rx="11" ry="11" fill="rgba(0, 212, 170, 0.1)" stroke="rgba(0, 212, 170, 0.3)" stroke-width="1"/>
+    <text x="50" y="15" font-family="system-ui, sans-serif" font-size="9" font-weight="500" fill="#00d4aa" text-anchor="middle">
+      OpenPledge
+    </text>
+    
+    <text x="20" y="220" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Minimal Tag</text>
+  </g>
+  
+  <!-- Badge 6: Achievement Style (inspired by trending section) -->
+  <g transform="translate(200, 180)">
+    <rect x="0" y="0" width="160" height="28" rx="6" ry="6" fill="url(#tealAccent)"/>
+    
+    <!-- Achievement icon -->
+    <circle cx="14" cy="14" r="8" fill="rgba(0,0,0,0.1)"/>
+    <text x="14" y="18" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#000000" text-anchor="middle">★</text>
+    
+    <text x="28" y="18" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#000000">
+      OpenPledge Achiever
+    </text>
+    
+    <text x="200" y="220" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Achievement Badge</text>
+  </g>
+  
+  <!-- Badge 7: Beta Style (like the beta indicator at bottom) -->
+  <g transform="translate(20, 240)">
+    <rect x="0" y="0" width="120" height="24" rx="4" ry="4" fill="#8b5cf6"/>
+    <text x="8" y="16" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="white">
+      OpenPledge BETA
+    </text>
+    
+    <text x="20" y="280" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Beta Style</text>
+  </g>
+  
+  <!-- Badge 8: Connect Style (like the connect button) -->
+  <g transform="translate(200, 240)">
+    <rect x="0" y="0" width="150" height="32" rx="16" ry="16" fill="url(#tealAccent)" filter="url(#glow)"/>
+    
+    <!-- GitHub icon -->
+    <circle cx="16" cy="16" r="8" fill="rgba(0,0,0,0.1)"/>
+    <text x="16" y="20" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#000000" text-anchor="middle">⚡</text>
+    
+    <text x="30" y="20" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#000000">
+      Connect OpenPledge
+    </text>
+    
+    <text x="200" y="280" font-family="system-ui, sans-serif" font-size="8" fill="#6b7280">Connect Style</text>
+  </g>
+</svg>
