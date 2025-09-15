@@ -30,7 +30,7 @@
 			return {
 				cities: [],
 				showModal: false,
-				api_key: '6f9a33953521ce556ec7d259aaf2b161',
+				api_key: '<YOUR_API_KEY_HERE>',
 				api_url: 'http://api.openweathermap.org/data/2.5/',
 				selectedCity: ''
 			}
